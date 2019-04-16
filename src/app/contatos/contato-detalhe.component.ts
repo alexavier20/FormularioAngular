@@ -17,6 +17,8 @@ declare var module: {
 
 export class contatoDetalheComponent {
 
+  contato: Contato;
+
   constructor(
     private contatoService : ContatoService,
     private route : ActivatedRoute,
@@ -24,13 +26,15 @@ export class contatoDetalheComponent {
   ) {}
 
   ngOnInit() : void {
+      this.contato = new Contato(1,'','','');
+
       this.route.params.forEach((params: Params) => {
         let id: number = +params['id'];
         console.log(id);
 
         this.contatoService.getContato(id)
           .then((contato:Contato) => {
-            console.log(contato);
+            this.contato = contato;
           });
       });
   }

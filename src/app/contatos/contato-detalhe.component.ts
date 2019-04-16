@@ -38,4 +38,11 @@ export class contatoDetalheComponent {
           });
       });
   }
+
+  getFormGroupClass(isValid: boolean, isPristine: boolean):{}{
+      return {
+          'is-invalid' : !isValid && !isPristine,
+          'is-valid' : isValid && !isPristine
+      };
+  }
 }

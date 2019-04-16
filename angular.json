@@ -134,6 +134,41 @@
           }
         }
       }
+    },
+    "libraryAlex": {
+      "root": "projects/library-alex",
+      "sourceRoot": "projects/library-alex/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/library-alex/tsconfig.lib.json",
+            "project": "projects/library-alex/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/library-alex/src/test.ts",
+            "tsConfig": "projects/library-alex/tsconfig.spec.json",
+            "karmaConfig": "projects/library-alex/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/library-alex/tsconfig.lib.json",
+              "projects/library-alex/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Cadastro-Contato"

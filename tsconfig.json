@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "library-alex": [
+        "dist/library-alex"
+      ],
+      "library-alex/*": [
+        "dist/library-alex/*"
+      ]
+    }
   }
 }

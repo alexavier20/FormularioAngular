@@ -2,7 +2,7 @@
 
     <h2>Salvar Contato</h2>
 
-    <form #contatoForm="ngForm" novalidate>             
+    <form (ngSubmit)="onSubmit()" #contatoForm="ngForm" novalidate>             
 
         <div class="form-group">
             <label class="form-control-label" for="nome">Nome</label>
@@ -12,7 +12,8 @@
             name="nome"             
             required
             #nome="ngModel"
-            [(ngModel)] = "contato.nome">              
+            [(ngModel)] = "contato.nome">  
+            <div class="invalid-feedback">O Campo nome é obrigatório!</div>            
         </div>
 
         <div class="form-group">
@@ -23,7 +24,8 @@
             name="email"             
             required
             #email="ngModel"
-            [(ngModel)] = "contato.email">           
+            [(ngModel)] = "contato.email"> 
+            <div class="invalid-feedback">O Campo E-mail é obrigatório!</div>            
         </div>
 
         <div class="form-group">
@@ -35,6 +37,7 @@
             required
             #telefone="ngModel"           
             [(ngModel)] = "contato.telefone">
+            <div class="invalid-feedback">O Campo Telefone é obrigatório!</div> 
         </div>
 
         <button type="submit" class="btn btn-success" [disabled]="!contatoForm.form.valid">Salvar</button>

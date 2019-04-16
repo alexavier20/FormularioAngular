@@ -18,24 +18,27 @@ declare var module: {
 export class contatoDetalheComponent {
 
   contato: Contato;
+  private isNew = true;
 
   constructor(
-    private contatoService : ContatoService,
-    private route : ActivatedRoute,
-    private location : Location
+    private contatoService: ContatoService,
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
-  ngOnInit() : void {
-      this.contato = new Contato(1,'','','');
+  ngOnInit(): void {
+      this.contato = new Contato(1, '', '', '');
 
       this.route.params.forEach((params: Params) => {
-        let id: number = +params['id'];
-        console.log(id);
+        const id: number = +params.id;
 
-        this.contatoService.getContato(id)
-          .then((contato:Contato) => {
-            this.contato = contato;
-          });
+        if (id) {
+          this.isNew = false;
+          this.contatoService.getContato(id)
+            .then((contato: Contato) => {
+                this.contato = contato;
+            });
+          }
       });
   }
 
@@ -44,5 +47,13 @@ export class contatoDetalheComponent {
           'is-invalid' : !isValid && !isPristine,
           'is-valid' : isValid && !isPristine
       };
+  }
+
+  onSubmit(): void {
+      if (this.isNew) {
+        // cadastrarContato()
+      } else {
+        // alterarContato()
+      }
   }
 }
